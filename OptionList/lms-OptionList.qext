@@ -1,0 +1,9 @@
+{
+	"name" : "Option List",
+	"description" : "Horizontal Option List",
+	"icon" : "list",
+	"type" : "visualization",
+	"version": "1.0",
+	"preview" : "listbox",
+	"author": "Adapted by lms from HorizList QlikTech Example"
+}
