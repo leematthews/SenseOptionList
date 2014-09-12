@@ -12,6 +12,7 @@ function($, cssContent) {'use strict';
 					qHeight : 50
 				}]
 			},
+			lbltxt : "Select Option: ",
 			fixed : true,
 			width : 25,
 			percent : true,
@@ -25,6 +26,11 @@ function($, cssContent) {'use strict';
 					type : "items",
 					label : "Width and Selections",
 					items : {
+						lbltxt : {
+							ref : "lbltxt",
+							label : "Prefix Field",
+							type : "string"
+						},
 						fixed : {
 							ref : "fixed",
 							label : "Fixed width",
@@ -120,31 +126,54 @@ function($, cssContent) {'use strict';
 		},
 		paint : function($element, layout) {
 			var self = this;
-			var html = "<ul>";
+			var html = '';
+			var space = '&nbsp&nbsp&nbsp';		
+
+			//Set style text regarding fixed width (or not)
 			var style;
 			if(layout.fixed) {
 				style = 'style="width:' + layout.width + (layout.percent ? '%' : 'px') + ';"';
 			} else {
 				style = '';
 			}
+
+
+			html += '<span style="font-family:Arial; font-size:130%;">'
+
+			//Label should be pulled from the lbltxt field, but doesnt seem to be working right now.
+			//This needs to be fixed so that the label can be edited or set to blank if required
+			//----------------------------------------------------------------------------------------
+			//alert(layout.lbltxt);
+			html += "Select Option: " + space ;
+
+			
+			//Render the List of Options based on the assigned field
+			//==========================================================
+			html += "<ul>";
 			this.backendApi.eachDataRow(function(rownum, row) {
 				html += '<li ' + style + ' class="data state' + row[0].qState + '" data-value="' + row[0].qElemNumber + '">&nbsp' 
 				//show checkboxes only in Qlick select Mode
 				//-----------------------------------------
 				if(layout.selectionMode === "QUICK") {
 					if(row[0].qState=='S'){
-						html += '<input type="checkbox" checked>&nbsp<span style="font-family:Arial; font-size:130%; font-weight:bold">'
+						html += '<input type="checkbox" checked>&nbsp<span style="font-family:Arial; font-size:100%; font-weight:bold">'
 					}
 					else{
-						html += '<input type="checkbox" >&nbsp<span style="font-family:Arial; font-size:130%;">'
+						html += '<input type="checkbox" >&nbsp<span style="font-family:Arial; font-size:100%;">'
 					}
 				}
-				html += row[0].qText;
+				html += row[0].qText + space;
 				html += '</span>'
 				html += '</li>';
 			});
 			html += "</ul>";
 			$element.html(html);
+
+			html += '</span>';
+
+
+			//Apply selections to the Option List
+			//==========================================================
 			if(this.selectionsEnabled && layout.selectionMode !== "NO") {
 				$element.find('li').on('qv-activate', function() {
 					if(this.hasAttribute("data-value")) {
