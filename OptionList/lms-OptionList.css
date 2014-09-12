@@ -3,34 +3,28 @@
 	border-top: 0px solid #ddd;
 	border-bottom: 0px solid #ddd;
 	position: absolute;
-  	top: 30%;
-
 }
 
-.qv-object-lms-OptionList ul {
-	list-style-type: circle;
-}
-
-.qv-object-lms-OptionList li.data {
-	display: inline-block;
-	margin: 2px;
-	padding: 3px;
+.qv-object-lms-OptionList span {
 	border-top: 0px solid #ddd;
 	border-left: 0px solid #ddd;
 	border-bottom: 0px solid #111;
 	border-right: 0px solid #111;
+}
+
+.qv-object-lms-OptionList ul {
+	/* seems we need to move the list down a bit to align with label */
+	position: relative;
+	top: 5px;
+	display: inline;
+}
+
+.qv-object-lms-OptionList li.data {
+	margin-bottom: 0px;
+	display: inline-block;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
-}
-
-/* frequency */
-.qv-object-lms-OptionList li.data span {
-/*
-	padding-left: 5px;
-	font-style: italic;
-	float:right;
-*/
 }
 
 
@@ -42,7 +36,9 @@
 	color: #52cc52
 }
 
-.qv-object-lms-OptionList li.stateX, .qv-object-lms-OptionList li.stateXL, .qv-object-lms-OptionList li.stateXS {
+.qv-object-lms-OptionList li.stateX, .qv-object-lms-OptionList li.stateXL, .qv-object-lms-
+
+OptionList li.stateXS {
 /*	background-color: #A9A9A9;
 	color: #fff;
 */
@@ -54,6 +50,7 @@
 	color: #000;
 */
 }
+
 .qv-object-lms-OptionList.qv-object-lms-OptionList li.selected {
 /*	background-color: #52cc52;
 	color: #fff;
