@@ -10,6 +10,10 @@ The selected option value can be used to drive things like:
  
 ..and whatever else you can think of.
 
+ISSUES:
+-------
+At this stage it is not reading the left hand side label text from the field in the configuration. I dont understand why. So its hard coded for the moment.
+
 ![selectbreed](https://cloud.githubusercontent.com/assets/8730341/4229342/0dccf458-396e-11e4-9f2c-e911659c585b.png)
 
 ![selectsize](https://cloud.githubusercontent.com/assets/8730341/4229348/266cb58e-396e-11e4-8d83-7027bba45534.png)
